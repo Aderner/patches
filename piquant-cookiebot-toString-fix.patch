@@ -1,0 +1,13 @@
+diff --git a/cookiebot.module b/cookiebot.module
+index 5a5b56e..2f82426 100644
+--- a/cookiebot.module
++++ b/cookiebot.module
+@@ -202,7 +202,7 @@ function cookiebot_preprocess_menu(&$vars) {
+   }
+ 
+   foreach ($vars['items'] as &$item) {
+-    if (!empty($item['url']) && $item['url']->toString() === '/cookiebot-renew') {
++    if (!empty($item['url']) && method_exists($item['url'], 'toString') && $item['url']->toString() === '/cookiebot-renew') {
+       /** @var \Drupal\Core\Template\Attribute $attributes */
+       $attributes = $item['attributes'];
+       $attributes->addClass('cookiebot-renew');
